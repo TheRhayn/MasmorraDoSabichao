@@ -1,0 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Colisao : MonoBehaviour
+{
+    public GameObject object1;
+    public GameObject object2;
+    public GameObject object3;
+    public GameObject object4;
+    public float distance_;
+    private bool ativar = false;
+
+void Start (){
+
+}
+   
+   void Update () {
+       distance_ = Vector3.Distance(object1.transform.position, object2.transform.position);
+       if(distance_ < 0.25 && Input.GetKeyDown(KeyCode.E)){
+        ativar = true;
+       }
+       if(distance_ > 0.25){
+        ativar = false;
+       }
+
+       if(ativar == true){
+        object3.SetActive(true);
+        object4.SetActive(false);
+       }
+       else{
+        object3.SetActive(false);
+       }
+      
+   }
+}
+
+
