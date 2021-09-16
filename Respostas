@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+public class Respostas : MonoBehaviour
+{
+    public GameObject object1;
+    public GameObject object2;
+    public GameObject object3;
+    public string Texto;
+    public Text resposta; 
+    public string NomeDaCena;
+    public float distance_;
+    
+
+    void Update(){
+distance_ = Vector3.Distance(object1.transform.position, object2.transform.position);
+        if(distance_ < 1.62){
+            if(Input.GetKeyDown(KeyCode.E)){ 
+             SceneManager.LoadScene(NomeDaCena);
+        }
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collider){ 
+        if(collider.gameObject.tag == "Player"){
+           object3.SetActive(true);
+            MudarTexto();
+        }  
+    } 
+    void MudarTexto() { 
+        resposta.text = Texto; 
+    }
+}
+
+
